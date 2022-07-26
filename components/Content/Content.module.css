@@ -1,0 +1,27 @@
+.highlighted{
+    width:100%;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height:40%;
+    min-height: 400px;
+}
+.highlighted::-webkit-scrollbar{
+    display: none;
+}
+
+
+.highlighted>div{
+    width: max-content;
+    margin-right: 50px;
+    margin-left:50px;
+    margin-top:20px;
+    margin-bottom:0px;
+
+}
+.title{
+    color:white;
+    font-size:18px;
+    font-weight: 600;
+    margin-left: 50px;
+}
