@@ -31,10 +31,10 @@ export default function Home({results}) {
 //this is the content that is rendered in the server
 export async function getServerSideProps(context){
   const genre = context.query.genre
-  const type = context.query.type
+  const type = context.query.type || "movie"
   console.log("type",type)
   const request = await fetch(
-    `https://api.themoviedb.org/3${requests[genre]?.url || requests.Upcoming.url}`
+    `https://api.themoviedb.org/3/${type}${requests[genre]?.url || requests.Upcoming.url}`
   ).then(res => res.json());
 
   return {

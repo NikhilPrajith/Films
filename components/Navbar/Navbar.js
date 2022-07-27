@@ -9,9 +9,6 @@ const Navbar = () => {
     return (
         <div className={`flex ${styles.container}`}>
             <div className={`flex ${styles.typeChoices}`}>
-                <a onClick={()=>{router.push(`?type=${"Movie"}`)}}>Movies</a>
-                <a onClick={()=>{router.push(`?type=${"Series"}`)}}>Series</a>
-                <a onClick={()=>{router.push(`?type=${"tvShows"}`)}}>TV Shows</a>
             </div>
 
         </div>
