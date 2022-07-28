@@ -5,6 +5,8 @@
     overflow-y: hidden;
     height:40%;
     min-height: 400px;
+    scroll-behavior: smooth;
+    
 }
 .highlighted::-webkit-scrollbar{
     display: none;

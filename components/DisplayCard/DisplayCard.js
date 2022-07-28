@@ -7,14 +7,14 @@ import { useRouter } from "next/router"
 
 const DisplayCard = ({ result,type }) =>{
     const router = useRouter();
-    const BASE_URL = 'https://image.tmdb.org/t/p/w500/'
+    const BASE_URL = 'https://image.tmdb.org/t/p/w500/';
     const Background = `${BASE_URL}${result.poster_path||result.backdrop_path}`||
     `${BASE_URL}${result.poster_path}`
     switch(type){
         case "showCase":
             return (
                 <div className={`p-2 group cursor-pointer ${styles.parent2}`}>
-                    <div style={{borderTopLeftRadius:'25px',borderTopRightRadius:'25px',overflow:'hidden',width:'600px',height:'100%', backgroundImage:`url(${Background})`,backgroundSize: 'cover',backgroundRepeat: 'no-repeat'}}>
+                    <div style={{border:'0.5px black solid', borderTopLeftRadius:'25px',borderTopRightRadius:'25px',overflow:'hidden',width:'600px',height:'100%', backgroundImage:`url(${Background})`,backgroundSize: 'cover',backgroundRepeat: 'no-repeat'}}>
                         {/*}
                         <Image 
                             layout='fill'
@@ -52,7 +52,7 @@ const DisplayCard = ({ result,type }) =>{
                     <div className={styles.text}>
                         <div className={styles.name}>{result.title || result.original_name}</div>
                         <div className={styles.year}>{`${result.release_date}`.slice(0,4)}</div>
-                        <div key={result.id} onClick={()=> router.push(`/about/?id=${key}`)} className={styles.viewButton}><a>View</a></div>
+                        <div onClick={()=> router.push(`/about/?id=${result.id}`)} className={styles.viewButton}><a>View</a></div>
                     </div>
                 </div>
             );

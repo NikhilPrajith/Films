@@ -3,8 +3,7 @@ import Header from '../components/Header'
 import Nav from '../components/Nav'
 import Content from "../components/Content/Content"
 import requests from '../utils.js/requests'
-import Sidebar from '../components/Sidebar/Sidebar'
-import Navbar from "../components/Navbar/Navbar"
+import Navbar from '../components/NavbarA/Navbar'
 import HighlightedContent from '../components/Content/HighlightedContent'
 
 export default function Home({results}) {
@@ -14,12 +13,11 @@ export default function Home({results}) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{maxHeight:'800px',overflow:'hidden'}} className="flex">
-        <Sidebar/>
-        <div style={{width:'100%',overflowY:'scroll',overflowX:'hidden'}}>
-          <Navbar/>
-          <HighlightedContent results={results.slice(0,3)}></HighlightedContent>
-          <Content results={results.slice(3)}></Content>
+      <div style={{}}>
+        <Navbar/>
+        <div style={{width:'100%',overflowX:'hidden',height:'100%',marginTop:'50px'}}>
+          <HighlightedContent results={results.slice(0,5)}></HighlightedContent>
+          <Content results={results.slice(5)}></Content>
         </div>
       </div>
 
@@ -32,14 +30,18 @@ export default function Home({results}) {
 export async function getServerSideProps(context){
   const genre = context.query.genre
   const type = context.query.type || "movie"
-  console.log("type",type)
-  const request = await fetch(
-    `https://api.themoviedb.org/3/${type}${requests[genre]?.url || requests.Upcoming.url}`
-  ).then(res => res.json());
+  const url = `https://api.themoviedb.org/3/${type}${requests[genre]?.url || requests.Upcoming.url}`
+  const urls = [
+    url, url+'&page=2',
+  ];
 
+  const [result1, result2] = await Promise.all(
+    urls.map((url) => fetch(url).then((res) => res.json()))
+  );
+  const combinedData = [...result1.results, ...result2.results] 
   return {
     props:{
-      results:request.results,
+      results:combinedData,
     },
   }
 }

@@ -3,19 +3,44 @@ import Header from '../components/Header'
 import Nav from '../components/Nav'
 import Content from "../components/Content/Content"
 import detailRequest from '../utils.js/detailRequest'
-import Sidebar from '../components/Sidebar/Sidebar'
-import Navbar from "../components/Navbar/Navbar"
+import Navbar from '../components/NavbarA/Navbar'
 import HighlightedContent from '../components/Content/HighlightedContent'
+import styles from '../styles/about.module.css'
+import Image from 'next/image'
 
-export default function Home({message,results}) {
-    console.log("Message",message)
-    console.log("About",results);
+
+export default function Home({message,result}) {
+    console.log("About",result);
+    if(message == "Empty"){
+        return (
+            <div styel={{width:'100vh',height:'100vh'}}>
+                <div>No data present!</div>
+                <div>Please check back later!</div>
+            </div>
+        );
+    }
+    const BASE_URL = 'https://image.tmdb.org/t/p/w500/';
+    const Background = `${BASE_URL}${result.backdrop_path}`||
+    `${BASE_URL}${result.poster_path}`
     return (
         <div>
-        <div style={{maxHeight:'800px',overflow:'hidden'}} className="flex">
-            <Sidebar/>
-            <div>Hello</div>
-        </div>
+            <div style={{width:'100%',height:'100%'}} className="flex">
+                <div className={styles.content}>
+                    <div>
+                        <Image 
+                            layout='responsive'
+                            src={`${Background}`}
+                            height={1080}
+                            width={1920}
+                        />
+                    </div>
+                    <div>
+                        <div>{result.original_title}</div>
+                        <div>{result.overview}</div>
+
+                    </div>
+                </div>
+            </div>
 
         </div>
     )
@@ -40,7 +65,7 @@ export async function getServerSideProps(context){
     return {
         props:{
             message:message,
-            results:data,
+            result:data,
         },
     }
 }
