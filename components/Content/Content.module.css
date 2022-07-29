@@ -3,8 +3,8 @@
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
-    height:40%;
-    min-height: 400px;
+    min-height: 220px;
+    max-height: 220px;
     scroll-behavior: smooth;
     
 }
@@ -15,10 +15,9 @@
 
 .highlighted>div{
     width: max-content;
-    margin-right: 50px;
-    margin-left:50px;
-    margin-top:20px;
-    margin-bottom:0px;
+    margin-right: 29px;
+    margin-bottom:15px;
+    margin-top:15px;
 
 }
 .title{
@@ -26,4 +25,27 @@
     font-size:18px;
     font-weight: 600;
     margin-left: 50px;
+}
+
+.poster{
+    width:100%;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-height: 270px;
+    max-height: 270px;
+    scroll-behavior: smooth;
+    
+}
+.poster::-webkit-scrollbar{
+    display: none;
+}
+
+
+.poster>div{
+    width: max-content;
+    margin-right: 29px;
+    margin-bottom:15px;
+    margin-top:15px;
+
 }

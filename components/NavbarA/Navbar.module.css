@@ -1,20 +1,36 @@
+.nav{
+    border-bottom: 0.9px rgba(83, 83, 83, 0.63) solid;
+    padding-bottom: 4px;
+    font-size: 16px;
+
+}
 .choices{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     padding-top:20px;
     padding-bottom: 14px;
 }
-.choices>a{
-    display: flex;
-    padding-left: 20px;
-    padding-right: 20px;
-    align-items: center;
-    color:white;
-    font-weight: 500;
-    font-size: 16px;
-    padding-bottom: 14px;
+.choices>div{
+    width:100%;
 }
-.choices>a:hover{
-    color: red;
-    cursor: pointer;
+.categories{
+    display: flex;
+
+}
+.categories>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+}
+
+
+.input{
+    border: 0.4px grey solid;
+    border-radius: 25px;
+    padding:5px;
+    padding-left:30px;
+    padding-right:30px;
+    width: 100%;
+    text-align: center;
 }

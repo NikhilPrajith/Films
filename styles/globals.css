@@ -4,6 +4,7 @@
 
 @layer base{
     body{
-        @apply bg-[#fff] text-gray-300;
+        @apply bg-[#fff];
+        font-family: PT Serif;
     }
 }

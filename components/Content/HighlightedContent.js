@@ -5,22 +5,17 @@ import { useEffect, useRef } from "react"
 
 function HighlightedContent({results}) {
 
-  const messagesEndRef = useRef(null)
-  const middle = Math.floor(results.length/2)
+  const centerRef = useRef(null)
   const scrollToBottom = () => {
     titleRef.current.scrollIntoView({ behavior: "smooth" })
   }
 
   useEffect(()=>{
-    console.log("Mess",messagesEndRef)
-    console.log(messagesEndRef.current.scrollWidth)
-    console.log()
-    messagesEndRef.current.scrollLeft +=((messagesEndRef.current.scrollWidth) /(2));
+    centerRef.current.scrollLeft +=((centerRef.current.scrollWidth) /(3));
   },[results]);
   return (
     <>
-    <div className={styles.title}>Featured:</div>
-    <div ref={messagesEndRef} className={styles.highlighted}>
+    <div ref={centerRef} className={styles.highlighted}>
           {results.map((result,index) => (
               <DisplayCard key={result.id} result={result} type="showCase"></DisplayCard>
           ))}
