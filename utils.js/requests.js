@@ -11,10 +11,18 @@ export default{
     },
     Popular:{
         title:'Popular',
-        url:`/top_rated?api_key=${API_KEY}`
+        url:`/top_rated?api_key=${API_KEY}&append_to_response=videos`
     },
     Upcoming:{
         title:'Trending',
         url:`/upcoming?api_key=${API_KEY}`
     },
+    PopularPeople:{
+        title:'Popular People',
+        url:`/person/popular?api_key=${API_KEY}`
+    },
+    GetVideo:{
+        title:'Video',
+        url:`/videos?api_key=${API_KEY}&language=en-US`
+    }
 }

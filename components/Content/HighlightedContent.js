@@ -6,9 +6,7 @@ import { useEffect, useRef } from "react"
 function HighlightedContent({results}) {
 
   const centerRef = useRef(null)
-  const scrollToBottom = () => {
-    titleRef.current.scrollIntoView({ behavior: "smooth" })
-  }
+
 
   useEffect(()=>{
     centerRef.current.scrollLeft +=((centerRef.current.scrollWidth) /(3));

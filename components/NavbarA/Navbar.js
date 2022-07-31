@@ -9,8 +9,21 @@ import {RiArrowDropDownLine} from 'react-icons/ri'
 
 const Navbar = () => {
     const router = useRouter();
+    const [addShadow, setAddShadow] = useState(false);
+    const changeNavbarStyle = () =>{
+        if(window.scrollY >= 80){
+            setAddShadow(true);
+        }
+        else{
+            setAddShadow(false);
+        }
+    };
+    useEffect(()=>{
+        window.addEventListener('scroll', changeNavbarStyle);
+    })
+    
     return (
-        <div className={styles.nav} style={{backgroundColor:'white',width:'100%',zIndex:'99'}}>
+        <div className={addShadow?styles.navWithShadow: styles.nav}>
             <div className={styles.choices}>
                 <div className={styles.categories}>
                     <div>Categories<RiArrowDropDownLine></RiArrowDropDownLine></div>

@@ -21,10 +21,11 @@
 
 }
 .title{
-    color:white;
-    font-size:18px;
-    font-weight: 600;
-    margin-left: 50px;
+    color:black;
+    font-size:17px;
+    font-family: 600;
+    margin-bottom: 15px;
+
 }
 
 .poster{
@@ -32,8 +33,8 @@
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
-    min-height: 270px;
-    max-height: 270px;
+    min-height: 250px;
+    max-height: 250px;
     scroll-behavior: smooth;
     
 }
@@ -46,6 +47,36 @@
     width: max-content;
     margin-right: 29px;
     margin-bottom:15px;
-    margin-top:15px;
 
+}
+
+.people{
+    width:100%;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-height: 210px;
+    max-height: 210px;
+    scroll-behavior: smooth;
+    
+}
+.people::-webkit-scrollbar{
+    display: none;
+}
+
+
+.people>div{
+    width: max-content;
+    margin-right: 29px;
+    margin-bottom:15px;
+
+}
+.detailed{
+    width:100%;
+    display: flex;
+    overflow: hidden;
+    min-height: 420px;
+    max-height: 420px;
+    margin-top: 65px;
+    
 }

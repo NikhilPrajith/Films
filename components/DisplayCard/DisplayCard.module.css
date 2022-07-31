@@ -1,12 +1,11 @@
 .parent{
     position: relative;
     border-radius: 8px;
-    margin-bottom: 90px;
+    margin-bottom: 70px;
     margin-right: 15px;
-    margin-left: 15px;
     padding: 0px;
 }
-.parent2{
+.showCaseParent2{
     position: relative;
     border-radius: 8px;
     margin-bottom: 90px;
@@ -16,20 +15,42 @@
     cursor: pointer;
     
 }
-.parent2:hover{
+.showCaseParent2:hover{
     -webkit-box-shadow: 0px 0px 13px 0px rgba(163,163,163,1);
     -moz-box-shadow: 0px 0px 13px 0px rgba(163,163,163,1);
     box-shadow: 0px 0px 13px 0px rgba(163,163,163,1);
 }
-.parent3{
-    position: relative;
+.posterParent3{
     border-radius: 8px;
     margin-bottom: 90px;
     margin-right: 10px;
     padding: 0px;
     width: 150%;
     cursor: pointer;
+    filter:opacity(60%);
     
+}
+.posterParent3:hover{
+    filter: opacity(100%);
+}
+
+
+.detailedParent4{
+    border-radius: 8px;
+    margin-bottom: 90px;
+    margin-right: 10px;
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    
+}
+.peopleParent5{
+    border-radius: 8px;
+    margin-right: 10px;
+    padding: 0px;
+    width: 100%;
+    height:100%;
+    cursor: pointer;
 }
 
 .highlighted_rating{
@@ -61,7 +82,7 @@
     top:0;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     color: white;
     /*filter: drop-shadow(0px 3px 3px rgba(0,0,0,1));*/
 }
@@ -73,12 +94,12 @@
     top:0;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     color: white;
     /*filter: drop-shadow(0px 3px 3px rgba(0,0,0,1));*/
 }
 .viewButton{
-    background-color: rgba(255, 0, 0, 0.77);
+    background-color: #29b6f6;
     padding: 5px;
     padding-left: 20px;
     width: fit-content;
@@ -144,17 +165,58 @@
     top:0;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
+    color: black;
+    /*filter: drop-shadow(0px 3px 3px rgba(0,0,0,1));*/
+}
+
+.text4{
+    width:100%;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     color: black;
     /*filter: drop-shadow(0px 3px 3px rgba(0,0,0,1));*/
 }
 
 .year3{
-    font-size: 14px;
-    margin-bottom: 4px;
+    font-size: 11px;
+    font-weight: 100;
+    color: grey;
 }
 .name3{
     font-size: 12px;
     padding: 0px;
     font-weight: 900;
+}
+.year4{
+    font-size: 14px;
+    color: grey;
+}
+.name4{
+    font-size: 27px;
+    padding: 0px;
+    font-weight: 900;
+}
+.overview{
+    width:100%;
+    font-size: 14px;
+    color:grey;
+}
+.viewMoreButton{
+    cursor: pointer;
+    font-size:15px;
+    color:#29b6f6;
+    padding-top: 15px;
+}
+
+.movieNames{
+    font-size:12px;
+    color:grey;
+    cursor: pointer;
+    margin-bottom: 7px;
+}
+.movieNames:hover{
+    color: black;
 }

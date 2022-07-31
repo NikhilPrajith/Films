@@ -10,7 +10,7 @@ function PosterContent({results}) {
 
   return (
     <>
-    <div className={styles.title}>Featured:</div>
+    <div className={styles.title}>Featured <a style={{cursor:'pointer',color:'#29b6f6',marginLeft:'45px',fontSize:'13px'}}>More</a></div>
     <div className={styles.poster}>
           {results.map((result,index) => (
               <DisplayCard key={result.id} result={result} type="poster"></DisplayCard>
