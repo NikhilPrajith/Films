@@ -1,12 +1,12 @@
 
-async function detailRequest({id}) {
+async function detailRequest({id,type}) {
     const API_KEY = process.env.API_KEY;
     console.log("Entered")
     if(id =="None"){
         console.log("Detailed","none")
         return "Empty View"
     }else{
-        const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
+        const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${API_KEY}`
         console.log("From detailed", url)
         return url
     }

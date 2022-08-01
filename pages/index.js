@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Header from '../components/Header'
-import Nav from '../components/Nav'
 import Content from "../components/Content/Content"
 import requests from '../utils.js/requests'
 import Navbar from '../components/NavbarA/Navbar'
@@ -11,30 +9,30 @@ import TopRated from '../components/TopRated/TopRated'
 import PeopleContent from '../components/Content/PeoplContent'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import Footer from '../components/Footer/Footer'
 
 export default function Home({results,topRated,topPeople,firstTopRatedVideo}) {
-  console.log("ok")
   //Set to two as we gather two pages on data before rendering
   const [pageNumber,setPageNumber] = useState(2)
   const [restOfResultsPointer,setRestOfResultsPointer] =  useState(33)
   const [wholeResultsSet,setResultsSet] = useState(results)
+  console.log(topPeople)
   useEffect(()=>{
   })
   const getMoreResults = async () =>{
-    console.log("getMoreResults",wholeResultsSet.length,restOfResultsPointer)
-    if(restOfResultsPointer +9>=wholeResultsSet.length){
-      console.log("Call api here")
-      const {message,data} = await axios.post(`/api/data`,{pageNumber:pageNumber,type:'movie'})
-      console.log("Message:", message, ", Data: ",data)
-      if(message == "Successful"){
-        console.log("Successful")
+    /*
+      The moviedb api can be requested here itself. However, I used the api routes of next.js
+      to practice using them.
+    */
+    if(restOfResultsPointer +8>=wholeResultsSet.length){
+      const {data} = await axios.post(`/api/data`,{pageNumber:pageNumber,type:'movie'})
+      if(data.message == "Successful"){
         setPageNumber(pageNumber+1)
-        setResultsSet(presentData => [...presentData, data]);
-        setRestOfResultsPointer(restOfResultsPointer+9);
+        setResultsSet([...wholeResultsSet, ...data.data]);
+        setRestOfResultsPointer(restOfResultsPointer+4);
       }
     }else{
-      console.log("Exited")
-      setRestOfResultsPointer(restOfResultsPointer+9) 
+      setRestOfResultsPointer(restOfResultsPointer+4) 
     }
   }
 
@@ -65,6 +63,7 @@ export default function Home({results,topRated,topPeople,firstTopRatedVideo}) {
           </div>
         </div>
       </div>
+      <Footer></Footer>
 
     </div>
   )

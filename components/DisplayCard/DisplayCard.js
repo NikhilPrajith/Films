@@ -92,7 +92,7 @@ const DisplayCard = ({ result,type }) =>{
                     <div style={{width:'100%',minWidth:'100px',display:'flex',alignItems:'center'}}>
                         <div>
                             {result.known_for.slice(0,4).map((movie,index) => (
-                                <div className={styles.movieNames} onClick={()=> router.push(`/about/?id=${movie.id}`)}>{generateTitle(`${movie.name||movie.original_title||movie.original_name}`,35)}</div>
+                                <div className={styles.movieNames} onClick={()=> router.push(`/about/?id=${movie.id}&type=${movie.media_type}`)}>{generateTitle(`${movie.name||movie.original_title||movie.original_name}`,35)}</div>
                             ))}
                         </div>
                     </div>
@@ -101,8 +101,8 @@ const DisplayCard = ({ result,type }) =>{
         default:
             {/* Small*/}
             return (
-                <div className={`p-2 group cursor-pointer ${styles.parent}`}>
-                    <div style={{borderRadius:'3px',overflow:'hidden'}}>
+                <div onClick={()=> router.push(`/about/?id=${result.id}`)} className={`p-2 group cursor-pointer ${styles.parent}`}>
+                    <div style={{borderRadius:'5px',overflow:'hidden'}}>
                         <Image 
                             layout='responsive'
                             src={`${BASE_URL}${result.backdrop_path || result.poster_path}`||

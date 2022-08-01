@@ -3,7 +3,10 @@
     border-radius: 8px;
     margin-bottom: 70px;
     margin-right: 15px;
-    padding: 0px;
+    padding: 4px;
+}
+.parent:hover{
+    padding:1px;
 }
 .showCaseParent2{
     position: relative;

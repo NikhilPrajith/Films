@@ -26,6 +26,7 @@ const Navbar = () => {
         <div className={addShadow?styles.navWithShadow: styles.nav}>
             <div className={styles.choices}>
                 <div className={styles.categories}>
+                    <div onClick={()=>{router.push("/")}}>Home</div>
                     <div>Categories<RiArrowDropDownLine></RiArrowDropDownLine></div>
                     <div>Year<RiArrowDropDownLine></RiArrowDropDownLine></div>
                 </div>
