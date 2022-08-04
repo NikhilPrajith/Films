@@ -34,13 +34,14 @@
 
 }
 .imageContainer{
-    width:65%;
+    width:63%;
     border-radius: 10px;
     overflow: hidden;
 }
 .overviewContainer{
-    width:35%;
+    width:37%;
     margin-left: 50px;
+    position: relative;
 }
 .overviewTitle{
     font-size: 27px;
@@ -61,4 +62,29 @@
     margin-top: 20px;
     color:grey;
     margin-bottom: 40px;
+}
+.rating{
+    position: absolute;
+    top: 0;
+    right: 0;
+    filter: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    margin-right: 12px;
+    background: rgba(0, 0, 0, 0.72);
+    color: white;
+    border-radius: 3px;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 900;
+    font-size: 18px;
+}
+.trailerAndClips{
+    padding-top: 60px;
+    font-size: 17px;
+    margin-bottom: 30px;
+    border-top: 0.9px rgba(83, 83, 83, 0.63) solid;
 }

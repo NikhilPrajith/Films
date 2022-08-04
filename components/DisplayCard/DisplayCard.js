@@ -98,6 +98,20 @@ const DisplayCard = ({ result,type }) =>{
                     </div>
                 </div>
             );
+        case "cast":
+            return (
+                <div className="flex">
+                    <div onClick={()=> router.push(`/person/?id=${result.id}`)} className={`p-2 group cursor-pointer ${styles.peopleParent6}`}>
+                        <div style={{borderRadius:'5px',overflow:'hidden',width:'145px',height:'70%',backgroundColor:'black', backgroundImage:`url(${ProfilePath})`,backgroundSize: 'cover',backgroundRepeat: 'no-repeat',backgroundPosition:'center'}}>
+                        </div>
+                        <div className={styles.text3}>
+                            <div className={styles.name5}>{result.original_name}</div>
+                            <div className={styles.characterName}>{result.character}</div>            
+                        </div>
+                    </div>
+                    
+                </div>
+            );
         default:
             {/* Small*/}
             return (

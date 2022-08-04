@@ -19,6 +19,17 @@ function PeopleContent({results,type}) {
                 </div>
                 </>
             )
+        case "cast":
+            return (
+                <>
+                <div style={{marginTop:'50px'}} className={styles.cast}>
+                    {results.map((person,index) => (
+                        <DisplayCard key={person.id} result={person} type="cast"></DisplayCard>
+                    ))}
+
+                </div>
+                </>
+            )
         default:
             return (
                 <>

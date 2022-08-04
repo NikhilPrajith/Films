@@ -23,7 +23,6 @@
 .title{
     color:black;
     font-size:17px;
-    font-family: 600;
     margin-bottom: 15px;
 
 }
@@ -68,6 +67,27 @@
 .people>div{
     width: max-content;
     margin-right: 29px;
+    margin-bottom:15px;
+
+}
+.cast{
+    width:100%;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-height: 230px;
+    max-height: 230px;
+    scroll-behavior: smooth;
+    
+}
+.cast::-webkit-scrollbar{
+    display: none;
+}
+
+
+.cast>div{
+    width: max-content;
+    margin-right: 49px;
     margin-bottom:15px;
 
 }
