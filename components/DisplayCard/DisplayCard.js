@@ -46,7 +46,14 @@ const DisplayCard = ({ result,type }) =>{
         case "poster":
             return (
                 <div onClick={()=> router.push(`/about/?id=${result.id}`)} className={`p-2 group cursor-pointer ${styles.posterParent3}`}>
-                    <div style={{borderRadius:'5px',overflow:'hidden',width:'110px',height:'80%', backgroundImage:`url(${PosterPathOrder})`,backgroundSize: 'cover',backgroundRepeat: 'no-repeat',backgroundPosition:'center'}}>
+                    <div style={{position:'relative',borderRadius:'5px',overflow:'hidden',width:'110px',height:'80%', backgroundColor:`black`,backgroundSize: 'cover',backgroundRepeat: 'no-repeat',backgroundPosition:'center'}}>
+                        <Image 
+                            quality={100}
+                            layout='fill'
+                            src={PosterPathOrder}
+                            style={{width:'100%',height:'100%'}}
+                            priority
+                            />
                     </div>
                     <div className={styles.text3}>
                         <div className={styles.name3}>{generateTitle(`${result.title || result.original_title}`,18)}</div>

@@ -100,7 +100,7 @@ export default function Home({message,result,videos,credits, recommendations}) {
                     <div>
                         <div className={styles.trailerAndClips}>Recommended</div>
                         <div>
-                            <PosterContent type="NoHeader" results={filteredRec.slice(0,15)}></PosterContent>
+                            <PosterContent type="NoHeader" results={filteredRec}></PosterContent>
                         </div>
                     </div>)}
             </div>

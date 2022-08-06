@@ -16,6 +16,7 @@ import PosterContent from"../components/Content/PosterContent"
 
 export default function Home({details,credits,taggedImages}) {
     console.log(details,credits,taggedImages)
+    const [filteredCred, setfilteredCred]= useState([]);
     if(!details){
         return (
             <div styel={{width:'100vh',height:'100vh'}}>
@@ -24,6 +25,14 @@ export default function Home({details,credits,taggedImages}) {
             </div>
         );
     }
+
+    useEffect(()=>{
+        var filtered =  credits.filter(function(content) {
+            return (content.backdrop_path != null || content.poster_path !=null);
+        });
+        setfilteredCred(filtered)
+          
+    },[credits])
     const getMoreResults = async ()=>{
         setVideoPointer(videoPointer+3) 
     }
@@ -34,17 +43,53 @@ export default function Home({details,credits,taggedImages}) {
         <div>
             <Navbar></Navbar>
             <div className={styles.container}>
-                <div className={styles.imageContainer} style={{backgroundPosition:'center',backgroundSize:'cover'}}>
+                <div className={styles.title}>{details.name}</div>
+                <div className={styles.details}>
+                    <div className={styles.imageContainer} style={{backgroundPosition:'center',backgroundSize:'cover'}}>
                         {Background &&(<Image 
                                 quality={100}
                                 layout='responsive'
                                 src={Background}
-                                height={980}
-                                width={1920}
+                                height={480}
+                                priority
+                                width={420}
                                 />)}
+                    </div>
+                    <div className={styles.overviewContainer}>
+                        <div>Birthday: <span style={{color:'grey'}}>{details.birthday}</span></div>
+                        <div>Place of Birth: <span style={{color:'grey'}}>{details.place_of_birth}</span></div>
+                        <div>Known for: <span style={{color:'grey'}}>{details.known_for_department}</span></div>
+                        <div>Biography: </div>
+                        <div className={styles.overview}>{details.biography}</div>
+                        {details.homepage &&(<div style={{cursor:'pointer',color:'#29b6f6'}}><a target="_blank" href={`${details.homepage}`}>Learn More!</a></div>)}
+                        {details.imdb_id &&(<div style={{cursor:'pointer',color:'#29b6f6'}}><a target="_blank" href={`https://www.imdb.com/name/${details.imdb_id}/`}>IMDB Homepage</a></div>)}
+                    </div>
                 </div>
-                <div className={styles.overviewContainer}>
-                   
+
+                {filteredCred.length>0 && (
+                <div>
+                    <div className={styles.moviesAndShows}>Movies and Shows</div>
+                    <div>
+                        <PosterContent type="NoHeader" results={filteredCred}></PosterContent>
+                    </div>
+                </div>)}
+                {taggedImages.length>0 &&(<div className={styles.pictures}>Photos:</div>)}
+                <div className='sm:grid md:grid-cols-4 xl:grid-cols-7 3xl:flex flex-wrap justify-center'>
+                {taggedImages.slice(0,35).map((image,index) => (
+                        <div className='mr-5 ' style={{display:'flex',marginBottom:'50px',minHeight:'230px'}}>
+                            <div style={{width:'100%'}}>
+                                <Image 
+                                quality={100}
+                                layout='responsive'
+                                src={`${BASE_URL}${image.file_path}`}
+                                height={480}
+                                priority
+                                width={420}
+                                />
+                            </div>
+                            
+                        </div>
+                    ))}
                 </div>
             </div>
             <Footer></Footer>
@@ -65,8 +110,8 @@ export async function getServerSideProps(context){
     return {
         props:{
             details:details,
-            credits:credits,
-            taggedImages:images,
+            credits:credits.cast,
+            taggedImages:images.results,
         },
     }
 }
