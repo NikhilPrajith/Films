@@ -30,11 +30,10 @@
     padding: 0px;
     width: 150%;
     cursor: pointer;
-    filter:opacity(60%);
     
 }
 .posterParent3:hover{
-    filter: opacity(100%);
+    filter: opacity(60%);
 }
 
 

@@ -34,7 +34,6 @@ export default function Home({message,result,videos,credits, recommendations}) {
             return (content.backdrop_path != null || content.poster_path !=null);
         });
         setFilteredRec(filtered)
-        console.log(filteredRec)
           
     },[recommendations])
 

@@ -5,9 +5,10 @@ import { useRouter } from 'next/router'
 import styles from "./Navbar.module.css";
 import { FaHome,FaDiscover, FaBook,FaFire,FaNew,FaClock } from 'react-icons/fa';
 import {RiArrowDropDownLine} from 'react-icons/ri'
+import DropDownMenu from "../DropDownMenu/DropDownMenu";
 
 
-const Navbar = () => {
+const Navbar = ({urlTitles,url}) => {
     const router = useRouter();
     const [addShadow, setAddShadow] = useState(false);
     const changeNavbarStyle = () =>{
@@ -20,15 +21,15 @@ const Navbar = () => {
     };
     useEffect(()=>{
         window.addEventListener('scroll', changeNavbarStyle);
+       
     })
-    
     return (
         <div className={addShadow?styles.navWithShadow: styles.nav}>
             <div className={styles.choices}>
                 <div className={styles.categories}>
                     <div onClick={()=>{router.push("/")}}>Home</div>
-                    <div>Categories<RiArrowDropDownLine></RiArrowDropDownLine></div>
-                    <div>Year<RiArrowDropDownLine></RiArrowDropDownLine></div>
+                    <div><DropDownMenu title="Categories" urlTitles={["Upcoming","Popular","New"]} page="category" ></DropDownMenu></div>
+                    {/*<div>Year<RiArrowDropDownLine></RiArrowDropDownLine></div>*/}
                 </div>
                 <div>
                     <input className={styles.input} type="text" id="searc" name="search" placeholder="Search whats on your mind..."></input>
