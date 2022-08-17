@@ -69,8 +69,6 @@ export default function Home({results,topRated,topPeople,firstTopRatedVideo}) {
   )
 }
 
-//server side rendering. Getting of props from api
-//https://api.themoviedb.org/3/movie/725201/videos?api_key=40ab831924caccbd8260359b94ef4301&language=en-US
 
 export async function getServerSideProps(context){
   const type = context.query.type || "movie";
@@ -90,7 +88,6 @@ export async function getServerSideProps(context){
   const videoUrl = `https://api.themoviedb.org/3/${type}/${topRatedResults[0].id}${requests.GetVideo.url}`
   const res = await fetch(videoUrl)
   const videoData = await res.json()
-  //const videoData= await fetch(`https://api.themoviedb.org/3${topRated.results[0]}${requests.GetVideo.url}`).then((res)=>res.json())
   const combinedData = [...result1.results, ...result2.results] 
   return {
     props:{

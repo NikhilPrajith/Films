@@ -6,11 +6,19 @@ import styles from "./Navbar.module.css";
 import { FaHome,FaDiscover, FaBook,FaFire,FaNew,FaClock } from 'react-icons/fa';
 import {RiArrowDropDownLine} from 'react-icons/ri'
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
+import axios from "axios";
 
 
 const Navbar = ({urlTitles,url}) => {
     const router = useRouter();
     const [addShadow, setAddShadow] = useState(false);
+    const [searchResults,setSearchResults] = useState([])
+    const [focused, setFocused] = React.useState(false)
+
+
+    const onFocus = () => setFocused(true)
+    const onBlur = () => setFocused(false)
+
     const changeNavbarStyle = () =>{
         if(window.scrollY >= 80){
             setAddShadow(true);
@@ -21,8 +29,19 @@ const Navbar = ({urlTitles,url}) => {
     };
     useEffect(()=>{
         window.addEventListener('scroll', changeNavbarStyle);
+
        
     })
+
+    const searchResultPreview = async ()=>{
+
+    }
+    const changed = async (evt)=>{
+        const {data} = await axios.post(`/api/search`,{query:evt.target.value})
+        console.log(data.results)
+        setSearchResults(data.results)
+
+    }
     return (
         <div className={addShadow?styles.navWithShadow: styles.nav}>
             <div className={styles.choices}>
@@ -31,8 +50,13 @@ const Navbar = ({urlTitles,url}) => {
                     <div><DropDownMenu title="Categories" urlTitles={["Upcoming","Popular","New"]} page="category" ></DropDownMenu></div>
                     {/*<div>Year<RiArrowDropDownLine></RiArrowDropDownLine></div>*/}
                 </div>
-                <div>
-                    <input className={styles.input} type="text" id="searc" name="search" placeholder="Search whats on your mind..."></input>
+                <div className={styles.dropdown}>
+                    <div style={{margin:'auto',width:'100%'}}><input onFocus={onFocus} onBlur={onBlur} onChange={(evt)=>{changed(evt)}} className={styles.input} type="text" id="searc" name="search" placeholder="Search whats on your mind..."></input></div>
+                    <div style={{display:`${searchResults.length>0?"block":"none"}` }} className={styles.dropDownContent}>
+                        {searchResults.slice(0,10).map((result,index)=>{
+                            return(<div className="cursor-pointer" onClick={()=>{router.push(`${result.media_type == 'person'?`/person/?id=${result.id}}`:`/about/?id=${result.id}&type=${result.media_type}`}`)}}>{result.name}</div>)
+                        })}
+                    </div>
                 </div>
                 <div style={{textAlign:'end',display:'flex',justifyContent:'flex-end'}}>
                     <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>Region<RiArrowDropDownLine></RiArrowDropDownLine></div>

@@ -19,7 +19,6 @@ function DisplayVideo({videos,movies}) {
     }
     tryFetchingData()
     return () => {
-      // this now gets called when the component unmounts
     }
 
   },[videos]);

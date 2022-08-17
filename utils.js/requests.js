@@ -24,5 +24,10 @@ export default{
     GetVideo:{
         title:'Video',
         url:`/videos?api_key=${API_KEY}&language=en-US`
+    },
+    Search:{
+        title:'Search',
+        url:`/search/multi?api_key=${API_KEY}`
+
     }
 }

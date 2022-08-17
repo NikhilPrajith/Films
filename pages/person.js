@@ -99,8 +99,6 @@ export default function Home({details,credits,taggedImages}) {
     )
 }
 
-//for server side, we get something called context which allow to show the url the client came from 
-//this is the content that is rendered in the server
 export async function getServerSideProps(context){
     const id = context.query.id || "None"
     const urls = await personData(id);
