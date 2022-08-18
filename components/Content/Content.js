@@ -1,8 +1,11 @@
 import { Result } from "postcss"
+import { useEffect, useState } from "react"
 import DisplayCard from "../DisplayCard/DisplayCard"
 import styles from "./Content.module.css"
 
-function Content({results,title}) {
+function Content({results,title,contentType}) {
+  useEffect(()=>{
+  },[results])
   return (
     <div style={{height:'100%',width:'100%'}}>
       <div style={{marginTop:'30px'}}className={styles.title}>{title||'Popular Movies'}:</div>
@@ -10,7 +13,7 @@ function Content({results,title}) {
           
 
           {results.map(result => (
-              <DisplayCard key={result.id} result={result} type="small"></DisplayCard>
+              <DisplayCard contentType={contentType} key={result.id} result={result} type="small"></DisplayCard>
           ))}
 
       </div>

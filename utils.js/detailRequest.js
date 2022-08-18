@@ -34,4 +34,3 @@ export async function personData(id){
     `https://api.themoviedb.org/3/person/${id}/tagged_images?api_key=${API_KEY}`
     ]
 }
-//url = `https://api.themoviedb.org/3/movie/438148?api_key=40ab831924caccbd8260359b94ef4301`

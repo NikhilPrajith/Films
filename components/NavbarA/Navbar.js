@@ -13,11 +13,19 @@ const Navbar = ({urlTitles,url}) => {
     const router = useRouter();
     const [addShadow, setAddShadow] = useState(false);
     const [searchResults,setSearchResults] = useState([])
-    const [focused, setFocused] = React.useState(false)
+    const [focused, setFocused] = useState(false)
+    const [contentMouseOver, setContentMouseOver] = useState(false)
 
+    const onFocus = () => {
+        setFocused(true)
+        
+    }
+    const onBlur = () => {
+        if(!contentMouseOver){
+            setFocused(false)
+        }
+    }
 
-    const onFocus = () => setFocused(true)
-    const onBlur = () => setFocused(false)
 
     const changeNavbarStyle = () =>{
         if(window.scrollY >= 80){
@@ -27,18 +35,15 @@ const Navbar = ({urlTitles,url}) => {
             setAddShadow(false);
         }
     };
+
     useEffect(()=>{
         window.addEventListener('scroll', changeNavbarStyle);
 
        
     })
 
-    const searchResultPreview = async ()=>{
-
-    }
     const changed = async (evt)=>{
         const {data} = await axios.post(`/api/search`,{query:evt.target.value})
-        console.log(data.results)
         setSearchResults(data.results)
 
     }
@@ -46,23 +51,25 @@ const Navbar = ({urlTitles,url}) => {
         <div className={addShadow?styles.navWithShadow: styles.nav}>
             <div className={styles.choices}>
                 <div className={styles.categories}>
-                    <div onClick={()=>{router.push("/")}}>Home</div>
-                    <div><DropDownMenu title="Categories" urlTitles={["Upcoming","Popular","New"]} page="category" ></DropDownMenu></div>
+                    <div className={styles.home} onClick={()=>{router.push("/")}}>Home</div>
+                    <div className={styles.filter} ><DropDownMenu title="Filter" urlTitles={["Upcoming","Popular","New","TVShows"]} regions={['Kdrama',"GermanShows"]}
+                        extrasMovies={["HorrorMovies","ThrillerMovies","ActionMovies"]} extrasTv={["RomanticShows","MysteryShows","FamilyShows","AnimationShows","DramaShows"]} page="category" ></DropDownMenu></div>
                     {/*<div>Year<RiArrowDropDownLine></RiArrowDropDownLine></div>*/}
                 </div>
                 <div className={styles.dropdown}>
                     <div style={{margin:'auto',width:'100%'}}><input onFocus={onFocus} onBlur={onBlur} onChange={(evt)=>{changed(evt)}} className={styles.input} type="text" id="searc" name="search" placeholder="Search whats on your mind..."></input></div>
-                    <div style={{display:`${searchResults.length>0?"block":"none"}` }} className={styles.dropDownContent}>
-                        {searchResults.slice(0,10).map((result,index)=>{
-                            return(<div className="cursor-pointer" onClick={()=>{router.push(`${result.media_type == 'person'?`/person/?id=${result.id}}`:`/about/?id=${result.id}&type=${result.media_type}`}`)}}>{result.name}</div>)
+                    <div onMouseEnter={()=>{setContentMouseOver(true)}} onMouseLeave={()=>{setContentMouseOver(false)}} style={{display:`${(focused)?"block":"none"}` }} className={styles.dropDownContent}>
+                        {searchResults.map((result,index)=>{
+                            return(<div className='cursor-pointer hover:bg-slate-300 px-4' onClick={()=>{router.push(`${result.media_type == 'person'?`/person/?id=${result.id}}`:`/about/?id=${result.id}&type=${result.media_type}`}`),setFocused(false)}}>{result.name || result.original_title}</div>)
                         })}
                     </div>
                 </div>
-                <div style={{textAlign:'end',display:'flex',justifyContent:'flex-end'}}>
-                    <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>Region<RiArrowDropDownLine></RiArrowDropDownLine></div>
+                <div className={styles.placeHolderDiv} >
+                    <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}></div>
                 </div>
 
             </div>
+
 
         </div>
     );

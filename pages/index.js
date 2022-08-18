@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Footer from '../components/Footer/Footer'
 import DropDownMenu from '../components/DropDownMenu/DropDownMenu'
+import styles from '../styles/base.module.css'
 
 export default function Home({results,topRated,topPeople,firstTopRatedVideo}) {
   //Set to two as we gather two pages on data before rendering
@@ -25,7 +26,7 @@ export default function Home({results,topRated,topPeople,firstTopRatedVideo}) {
       to practice using them.
     */
     if(restOfResultsPointer +8>=wholeResultsSet.length){
-      const {data} = await axios.post(`/api/data`,{pageNumber:pageNumber,type:'movie'})
+      const {data} = await axios.post(`/api/data`,{pageNumber:pageNumber,type:'/movie',url:'Discover'})
       if(data.message == "Successful"){
         setPageNumber(pageNumber+1)
         setResultsSet([...wholeResultsSet, ...data.data]);
@@ -41,18 +42,18 @@ export default function Home({results,topRated,topPeople,firstTopRatedVideo}) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{margin:'60px',marginTop:'5px',overflowX:'hidden'}}>
+      <div className={styles.parent}>
         <Navbar/>
         <div style={{width:'100%',overflowX:'hidden',height:'100%',marginTop:'100px'}}>
           <HighlightedContent results={results.slice(0,7)}></HighlightedContent>
           <div style={{display:'flex',marginTop:'45px',justifyContent:'space-between'}}>
-            <div style={{width:'66%'}}>
+            <div className={styles.mainLeftContent}>
               <PosterContent results={results.slice(8,25)}></PosterContent>
               <DetailedContent result={results[0]}></DetailedContent>
               <PeopleContent results={topPeople.slice(0,10)}></PeopleContent>
               <PeopleContent results={topPeople.slice(10)} type='noTitle'></PeopleContent>
             </div>
-            <div style={{width:'34%',paddingLeft:'68px'}}>
+            <div className={styles.video} style={{width:'34%',paddingLeft:'68px'}}>
               <TopRated videos={firstTopRatedVideo} movies={topRated}></TopRated>
             </div>
           </div>

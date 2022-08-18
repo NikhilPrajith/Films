@@ -67,7 +67,3 @@ function DisplayVideo({videos,movies}) {
 }
 
 export default DisplayVideo
-//https://www.youtube.com/watch?v=P9mwtI82k6E
-//{"iso_639_1":"en","iso_3166_1":"US","name":"The Shawshank Redemption (1994) 
-//OFFICIAL TRAILER [HD 1080p]","key":"P9mwtI82k6E","site":"YouTube","size":1080,
-//"type":"Trailer","official":false,"published_at":"2020-02-18T16:17:17.000Z","id":"62e33568b0040a006cbfe89b"}

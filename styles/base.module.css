@@ -1,0 +1,24 @@
+.mainLeftContent{
+    width: 66%;
+}
+.parent{
+    margin:60px;
+    margin-top:5px;
+    overflow-x:hidden;
+}
+@media only screen and (max-width: 1200px) {
+    .video {
+      display: none;
+    }
+    .mainLeftContent{
+        width:100%;
+    }
+  }
+@media only screen and (max-width: 700px) {
+    .video {
+      display: none;
+    }
+    .parent{
+        margin: 30px;
+    }
+  }

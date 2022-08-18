@@ -8,9 +8,9 @@ export default async function handler(req, res) {
             res.status(404).json({ message:"No page number provided", data: [] })
         }
         const type = req.body.type
+        
         const pageNumber = req.body.pageNumber +1
-        const url = `https://api.themoviedb.org/3/${type}${requests[req.body.url].url||requests.Discover.url}`+`&page=${pageNumber}`;
-        console.log("urrlr",url)
+        const url = `https://api.themoviedb.org/3${type}${requests[req.body.url].url||requests.Discover.url}`+`&page=${pageNumber}`;
         const gatherData = await fetch(url)
         const data = await gatherData.json()
         if(data.status_code == 401 || data.status_code == 404 || data.status_code == 7){

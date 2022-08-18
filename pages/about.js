@@ -17,7 +17,6 @@ import PosterContent from"../components/Content/PosterContent"
 export default function Home({message,result,videos,credits, recommendations}) {
     const [videoPointer,setVideoPointer] = useState(6)
     const [filteredRec, setFilteredRec]= useState([]);
-    console.log(result)
     if(message == "Empty"){
         return (
             <div styel={{width:'100vh',height:'100vh'}}>
@@ -108,9 +107,6 @@ export default function Home({message,result,videos,credits, recommendations}) {
         </div>
     )
 }
-
-//for server side, we get something called context which allow to show the url the client came from 
-//this is the content that is rendered in the server
 export async function getServerSideProps(context){
     const id = context.query.id || "None"
     const type = context.query.type||"movie"

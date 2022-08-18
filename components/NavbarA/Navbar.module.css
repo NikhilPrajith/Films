@@ -82,5 +82,39 @@
     border: 0.4px grey solid;
     border-radius: 5px;
     padding: 5px;
-    padding-left: 30px;
+    max-height: 225px;
+    overflow: scroll;
 }
+.placeHolderDiv{
+    text-align:end;
+    display:flex;
+    justify-content:flex-end;
+}
+
+
+
+@media only screen and (max-width: 1030px) {
+    .placeHolderDiv{
+        display: none;
+    }
+  }
+  @media only screen and (max-width: 930px) {
+    .home{
+        display: none !important;
+    }
+    .nav{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .categories{
+        width:auto !important ;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .placeHolderDiv{
+        display: none;
+    }
+    .categories{
+        display: none;
+    }
+  }

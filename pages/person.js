@@ -15,7 +15,7 @@ import PosterContent from"../components/Content/PosterContent"
 
 
 export default function Home({details,credits,taggedImages}) {
-    console.log(details,credits,taggedImages)
+    (details,credits,taggedImages)
     const [filteredCred, setfilteredCred]= useState([]);
     if(!details){
         return (

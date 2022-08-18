@@ -6,7 +6,7 @@ import {AiTwotoneStar} from "react-icons/ai"
 
 
 
-const DisplayCard = ({ result,type }) =>{
+const DisplayCard = ({ result,type,contentType }) =>{
     const router = useRouter();
     const BASE_URL = 'https://image.tmdb.org/t/p/w500/';
     const Background = `${BASE_URL}${result.backdrop_path||result.poster_path}`||
@@ -25,6 +25,13 @@ const DisplayCard = ({ result,type }) =>{
             return overview.slice(0,350)+"..."
         }
         return overview
+    }
+    const posterClick = async ()=>{
+        if(result.media_type){
+            router.push(`/about/?id=${result.id}&type=${result.media_type}`);
+        }else{
+            router.push(`/about/?id=${result.id}`)
+        }
     }
     
 
@@ -45,7 +52,7 @@ const DisplayCard = ({ result,type }) =>{
             );
         case "poster":
             return (
-                <div onClick={()=> router.push(`/about/?id=${result.id}`)} className={`p-2 group cursor-pointer ${styles.posterParent3}`}>
+                <div onClick={posterClick} className={`p-2 group cursor-pointer ${styles.posterParent3}`}>
                     <div style={{position:'relative',borderRadius:'5px',overflow:'hidden',width:'110px',height:'80%', backgroundColor:`black`,backgroundSize: 'cover',backgroundRepeat: 'no-repeat',backgroundPosition:'center'}}>
                         <Image 
                             quality={100}
@@ -56,8 +63,8 @@ const DisplayCard = ({ result,type }) =>{
                             />
                     </div>
                     <div className={styles.text3}>
-                        <div className={styles.name3}>{generateTitle(`${result.title || result.original_title}`,18)}</div>
-                        <div className={styles.year3}>{`${result.release_date}`.slice(0,4)}</div>
+                        <div className={styles.name3}>{generateTitle(`${result.title || result.original_title || result.name}`,18)}</div>
+                        <div className={styles.year3}>{`${result.release_date||result.first_air_date}`.slice(0,4)}</div>
                         
                         
                     </div>
@@ -122,7 +129,7 @@ const DisplayCard = ({ result,type }) =>{
         default:
             {/* Small*/}
             return (
-                <div onClick={()=> router.push(`/about/?id=${result.id}`)} className={`p-2 group cursor-pointer ${styles.parent}`}>
+                <div onClick={()=> router.push(`/about/?id=${result.id}&type=${contentType}`)} className={`p-2 group cursor-pointer ${styles.parent}`}>
                     <div style={{borderRadius:'5px',overflow:'hidden'}}>
                         <Image 
                             layout='responsive'
@@ -133,9 +140,9 @@ const DisplayCard = ({ result,type }) =>{
                             />
                         </div>
                     <div className={styles.text}>
-                        <div className={styles.name}>{result.title || result.original_title}</div>
-                        <div className={styles.year}>{`${result.release_date}`.slice(0,4)}</div>
-                        <div onClick={()=> router.push(`/about/?id=${result.id}`)} className={styles.viewButton}><a>View</a></div>
+                        <div className={styles.name}>{result.title || result.original_title || result.name}</div>
+                        <div className={styles.year}>{`${result.release_date||result.first_air_date}`.slice(0,4)}</div>
+                        <div onClick={()=> {router.push(`/about/?id=${result.id}&type=${contentType}`)}} className={styles.viewButton}><a>View</a></div>
                     </div>
                 </div>
             );
