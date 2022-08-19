@@ -10,7 +10,7 @@ Open [http://localhost:3000](http://localhost:3000/) with your browser to see 
 
 ## Progress Video:
 
-![](http://g.recordit.co/gH0k2LJv8K.gif)
+<img src='http://g.recordit.co/gH0k2LJv8K.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 Please note the lag is due to the recording software, [RecordIt](https://recordit.co)
 
