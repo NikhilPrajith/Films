@@ -4,6 +4,10 @@ Obtain a [TMDB](https://developers.themoviedb.org/3/getting-started/introductio
 
 Create an env file in the root directory of the project containing: 'API_KEY=<>'
 
+Install node.js and Npm, check to make sure you have the latest version.
+
+Install npm packages: npm install
+
 Then, run the development server: npm run dev **or** yarn dev
 
 Open [http://localhost:3000](http://localhost:3000/) with your browser to see the result.
