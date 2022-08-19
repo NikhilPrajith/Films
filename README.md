@@ -1,3 +1,9 @@
+## **Overview:**
+
+Utilized the movie database API to build a simple movie, tv, and actors' information webpage in next.js. The webpage allows the users to see the latest trending movies and shows, along with a search field to find details about any film or person. It also has a categorizing tab to filter based on trending topics or genres. 
+
+Time spent: 7 hours over 4 weeks
+
 ## **Getting Started:**
 
 Obtain a [TMDB](https://developers.themoviedb.org/3/getting-started/introduction) API key.
@@ -29,6 +35,14 @@ Please note the lag is due to the recording software, [RecordIt](https://recordi
 You can start editing the page by modifying the files under `pages/`. 
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/](http://localhost:3000/api/hello). The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+### Next Steps:
+
+Guest session for fetching reviews and posting reviews. 
+
+An improved filtering/searching feature. 
+
+Local storage utilization to keep a watchlist.
 
 ### Contact:
 
