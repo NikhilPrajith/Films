@@ -2,7 +2,7 @@
 
 Utilized the movie database API to build a simple movie, tv, and actors' information webpage in next.js. The webpage allows the users to see the latest trending movies and shows, along with a search field to find details about any film or person. It also has a categorizing tab to filter based on trending topics or genres. 
 
-Time spent: 7 hours over 4 weeks
+Time spent: 7 hours, over the course of 4 weeks
 
 ## **Getting Started:**
 
