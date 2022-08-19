@@ -59,7 +59,7 @@ export default function Home({results,topRated,topPeople,firstTopRatedVideo}) {
           </div>
           <div>
             {/*The 25 was set based on the slicing done earlier */}
-            <Content results={wholeResultsSet.slice(25,restOfResultsPointer)}></Content>
+            <Content results={wholeResultsSet.slice(25,restOfResultsPointer)} contentType="movie"></Content>
             <div onClick={getMoreResults} style={{cursor:'pointer',color:'#29b6f6',textAlign:'center'}}>Show More</div>
           </div>
         </div>

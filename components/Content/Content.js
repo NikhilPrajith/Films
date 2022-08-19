@@ -13,7 +13,7 @@ function Content({results,title,contentType}) {
           
 
           {results.map(result => (
-              <DisplayCard contentType={contentType} key={result.id} result={result} type="small"></DisplayCard>
+              <DisplayCard contentType={contentType?contentType:'movie'} key={result.id} result={result} type="small"></DisplayCard>
           ))}
 
       </div>
