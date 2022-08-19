@@ -10,7 +10,7 @@ Open [http://localhost:3000](http://localhost:3000/) with your browser to see 
 
 ## Progress Video:
 
-<img src='http://g.recordit.co/gH0k2LJv8K.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+https://user-images.githubusercontent.com/57269214/185606706-ea20ad96-a70c-4333-ba45-04148d2c2cd3.mov
 
 Please note the lag is due to the recording software, [RecordIt](https://recordit.co)
 
@@ -18,7 +18,7 @@ Please note the lag is due to the recording software, [RecordIt](https://recordi
 
 ### Tools Used:
 
-[Next.js](https://www.notion.so/Films-Readme-4521ec6a37164d0f9fdf9978c79f858e), [React.js](https://reactjs.org), [Tailwind.css](https://tailwindcss.com), HTML, CSS, Javascript, API
+[Next.js](https://nextjs.org), [React.js](https://reactjs.org), [Tailwind.css](https://tailwindcss.com), HTML, CSS, Javascript, API
 
 ### Key Information:
 
